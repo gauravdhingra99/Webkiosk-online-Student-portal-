@@ -1,0 +1,5 @@
+python==2.7.1
+Django==2.0.5
+requests==2.19.1
+urllib3==1.23
+beautifulsoup4==4.6.3
