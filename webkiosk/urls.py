@@ -19,8 +19,8 @@ from kiosk import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name="index"),
-    path('user/',include('kiosk.urls')),
+    path('login/',views.login,name="login"),
+    path('user/',views.user,name='user'),
     path('personal_info/',views.personal_info,name="personal_info"),
     path('regsinfo/',views.regsinfo,name="regsinfo"),
     path('feereciept/',views.feereciept,name="feereciept"),
@@ -33,5 +33,4 @@ urlpatterns = [
     path('displinary/',views.displinary,name='displinary'),
     path('exammarks/',views.exammarks,name='exammarks'),
     path('showattendance/w+/',views.Attendance,name='attendenceshowall'),
-
-]
+    ]

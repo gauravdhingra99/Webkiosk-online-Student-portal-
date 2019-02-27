@@ -4,81 +4,130 @@ from django.template import Template, Context
 from django.http import HttpResponse
 # Create your views here.
 
-def index(request):
-    form = NewUserForm()
-
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
-
-        if form.is_valid():
-            form.save(commit=True)
-            global ern
-            global dob
-            global passw
-            ern=form.cleaned_data.get("enroll")
-            dob=form.cleaned_data.get("DOB")
-            passw=form.cleaned_data.get("password")
-            #print(type(ern))
-            #print(type(dob))
-            #print(type(passw))
-            import requests
-            from bs4 import BeautifulSoup
-            s=requests.Session()
-            import urllib3
-            requests.packages.urllib3.disable_warnings()
-            requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
-            try:
-                requests.packages.urllib3.contrib.pyopenssl.DEFAULT_SSL_CIPHER_LIST += 'HIGH:!DH:!aNULL'
-            except AttributeError:
-                # no pyopenssl support used / needed / available
-                pass
-
-            head={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Cache-Control":"max-age=0",
-            "Connection":"keep-alive",
-            "Content-Length":"195",
-            "Content-Type":"application/x-www-form-urlencoded",
-            "Cookie": "switchmenu=sub4;",
-            "Host":"webkiosk.juet.ac.in",
-            "Origin":"https://webkiosk.juet.ac.in",
-            "Referer": "https://webkiosk.juet.ac.in/",
-            "Upgrade-Insecure-Requests": "1",
-            "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"}
+# def login(request):
+#     def post(self,request):
+#         print(request.data)
+#         print("aaaaaaaaaaaaaaaa")
+#         username=request.data.get('Enrollment')
+#         DOB=request.data.get('DOB')
+#         password=request.data.get('password')
+#         user=authenticate(username=username,password=password,DOB=DOB)
+#         if user is not None:
+#             if user.is_active:
+#                 login(request, user)
+#                 return render(request,"kiosk/user.html",{"message":"Signed in."})
+#             else:
+#                 return render(request,"kiosk/user.html",{"message":"Wrong Details"})
+#         else:
+#             return Response({"message": "invalid"})
+#         return Response({"message": "denied"})
 
 
-            data={"x":"",
-            "txtInst": "Institute",
-            "InstCode": "JUET",
-            "txtuType": "Member Type",
-            "UserType": "S",
-            "txtCode": "Enrollment No",
-            "MemberCode": str(ern),
-            "DOB": "DOB",
-            "DATE1": str(dob),
-            "txtPin": "Password/Pin",
-            "Password": str(passw),
-            "BTNSubmit": "Submit",
-            }
-            url="https://webkiosk.juet.ac.in/CommonFiles/UserAction.jsp"
-            r=s.post(url,headers=head,data=data)
-            #print(type(r.text))
-            #print(len(r.text))
 
-            #print(data)
-            new=s.cookies.get_dict()
+#     if not request.user.is_anonymous:
+#         logout(request)
+#         print("user logged out")
+#     else:
+#         user=request.POST.get("EnrollMent")
+#         password=request.POST.get("password")
+#         DOB=request.POST.get("DOB")
+#         print(request.POST)
+#         if not User.objects.filter(username=user).exists():
+#             return  render(request,"kiosk/user.html",{"message":"Wrong Enrollment no."})
+#         user_obj=authenticate(username=user,password=password,DOB=DOB)
+#         if user_obj is None:
+#             return  render(request,"kiosk/user.html",{"message":"Some Detail is wrong"})
+#         if not user_obj.is_staff:
+#             return render(request, "kiosk/login.html",{"message": "Please Confirm  your email to login."})
+#         elif user_obj.is_staff:
+#             login(request,user_obj)
+#             return redirect("/welcome/")
+#         elif user_obj.is_staff==False :
+#             return HttpResponse("Sorry you can't participate in this contest.")
+#         else:
+#             return HttpResponse("Sorry you can't participate in this contest.")
+#     return  render(request,"login/login.html")
 
-            if(len(r.text) == 472 or len(r.text) > 1434 ):
-                return render(request,'kiosk/user.html')
-            else:
-                html = "<script> alert('you entered wrong credentials !'); </script>"
-                return HttpResponse(html)
 
+
+# def logoutuser(request):
+#     logout(request)
+#     return redirect("/home/")
+
+
+
+
+def login(request):
+    print(request.POST)
+    if request.method == 'POST':
+        global ern
+        global dob
+        global passw
+        ern=request.POST.get("Enrollment")
+        dob=request.POST.get("DOB")
+        passw=request.POST.get("pass1")
+        print(ern)
+        print(dob)
+        print(passw)
+        #print(type(ern))
+        #print(type(dob))
+        #print(type(passw))
+        import requests
+        from bs4 import BeautifulSoup
+        s=requests.Session()
+        import urllib3
+        requests.packages.urllib3.disable_warnings()
+        requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
+        try:
+            requests.packages.urllib3.contrib.pyopenssl.DEFAULT_SSL_CIPHER_LIST += 'HIGH:!DH:!aNULL'
+        except AttributeError:
+            # no pyopenssl support used / needed / available
+            pass
+
+        head={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Cache-Control":"max-age=0",
+        "Connection":"keep-alive",
+        "Content-Length":"195",
+        "Content-Type":"application/x-www-form-urlencoded",
+        "Cookie": "switchmenu=sub4;",
+        "Host":"webkiosk.juet.ac.in",
+        "Origin":"https://webkiosk.juet.ac.in",
+        "Referer": "https://webkiosk.juet.ac.in/",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"}
+
+
+        data={"x":"",
+        "txtInst": "Institute",
+        "InstCode": "JUET",
+        "txtuType": "Member Type",
+        "UserType": "S",
+        "txtCode": "Enrollment No",
+        "MemberCode": str(ern),
+        "DOB": "DOB",
+        "DATE1": str(dob),
+        "txtPin": "Password/Pin",
+        "Password": str(passw),
+        "BTNSubmit": "Submit",
+        }
+        url="https://webkiosk.juet.ac.in/CommonFiles/UserAction.jsp"
+        r=s.post(url,headers=head,data=data)
+        #print(type(r.text))
+        #print(len(r.text))
+
+        #print(data)
+        new=s.cookies.get_dict()
+        print("this is total length"+str(len(r.text)))
+        if(len(r.text) == 472 or len(r.text) > 1434 ):
+            print("i m in if")
+            return render(request,'kiosk/user.html')
         else:
-            print("error form invalid")
+            print("i m in else")
+            return render(request,'kiosk/login.html',{"message":"Wrong credentials"})
 
-    return render(request,'kiosk/index.html',{'form':form})
+    return render(request,'kiosk/login.html')
 
 
 
