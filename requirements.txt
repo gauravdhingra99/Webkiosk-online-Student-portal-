@@ -1,5 +1,57 @@
-Django==2.0.5
-requests==2.19.1
-urllib3==1.23
-beautifulsoup4==4.6.3
-
+# packages in environment at /home/gaurav/anaconda3/envs/myDjangoEnv:
+#
+# Name                    Version                   Build  Channel
+argon2-cffi               18.1.0                    <pip>
+bcrypt                    3.1.4                     <pip>
+beautifulsoup4            4.6.3                     <pip>
+ca-certificates           2018.11.29           ha4d7672_0    conda-forge
+certifi                   2018.11.29            py36_1000    conda-forge
+cffi                      1.11.5                    <pip>
+chardet                   3.0.4                     <pip>
+Cython                    0.29.1                    <pip>
+Django                    2.1.5                     <pip>
+django                    2.0.5            py36hd476221_0  
+django-bootstrap3         10.0.1                    <pip>
+django-braces             1.13.0                    <pip>
+django-cors-headers       2.4.0                      py_0    conda-forge
+django-debug-toolbar      1.9.1                     <pip>
+django-filter             2.1.0                      py_0    conda-forge
+django-post-office        3.0.4                     <pip>
+django-smuggler           0.9.1                     <pip>
+djangorestframework       3.9.1                      py_0    conda-forge
+djangorestframework-filters 0.10.0                   py36_0    clinicalgraphics
+Faker                     0.8.17                    <pip>
+idna                      2.7                       <pip>
+instamojo-wrapper         1.1                       <pip>
+jsonfield                 2.0.2                     <pip>
+krb5                      1.16.1               h173b8e3_7  
+libedit                   3.1.20170329         h6b74fdf_2  
+libffi                    3.2.1                hd88cf55_4  
+libgcc-ng                 7.3.0                hdf63c60_0    conda-forge
+libpq                     11.1                 h20c2e04_0  
+libstdcxx-ng              7.3.0                hdf63c60_0    conda-forge
+lxml                      4.2.5                     <pip>
+markdown                  3.0.1                    py36_0    anaconda
+misaka                    2.1.0                     <pip>
+mysqlclient               1.3.12                    <pip>
+ncurses                   6.1                  hf484d3e_0  
+openssl                   1.1.1a            h14c3975_1000    conda-forge
+Pillow                    5.2.0                     <pip>
+pip                       10.0.1                   py36_0  
+psycopg2                  2.7.6.1          py36h1ba5d50_0  
+pycparser                 2.18                      <pip>
+python                    3.6.8                h0371630_0  
+python-dateutil           2.7.3                     <pip>
+pytz                      2018.5                   py36_0  
+readline                  7.0                  ha6073c6_4  
+requests                  2.19.1                    <pip>
+setuptools                39.2.0                   py36_0  
+six                       1.11.0                    <pip>
+sqlite                    3.26.0            h67949de_1000    conda-forge
+sqlparse                  0.2.4                     <pip>
+text-unidecode            1.2                       <pip>
+tk                        8.6.9             h84994c4_1000    conda-forge
+urllib3                   1.23                      <pip>
+wheel                     0.31.1                   py36_0  
+xz                        5.2.4                h14c3975_4  
+zlib                      1.2.11               ha838bed_2  

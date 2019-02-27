@@ -4,59 +4,6 @@ from django.template import Template, Context
 from django.http import HttpResponse
 # Create your views here.
 
-# def login(request):
-#     def post(self,request):
-#         print(request.data)
-#         print("aaaaaaaaaaaaaaaa")
-#         username=request.data.get('Enrollment')
-#         DOB=request.data.get('DOB')
-#         password=request.data.get('password')
-#         user=authenticate(username=username,password=password,DOB=DOB)
-#         if user is not None:
-#             if user.is_active:
-#                 login(request, user)
-#                 return render(request,"kiosk/user.html",{"message":"Signed in."})
-#             else:
-#                 return render(request,"kiosk/user.html",{"message":"Wrong Details"})
-#         else:
-#             return Response({"message": "invalid"})
-#         return Response({"message": "denied"})
-
-
-
-#     if not request.user.is_anonymous:
-#         logout(request)
-#         print("user logged out")
-#     else:
-#         user=request.POST.get("EnrollMent")
-#         password=request.POST.get("password")
-#         DOB=request.POST.get("DOB")
-#         print(request.POST)
-#         if not User.objects.filter(username=user).exists():
-#             return  render(request,"kiosk/user.html",{"message":"Wrong Enrollment no."})
-#         user_obj=authenticate(username=user,password=password,DOB=DOB)
-#         if user_obj is None:
-#             return  render(request,"kiosk/user.html",{"message":"Some Detail is wrong"})
-#         if not user_obj.is_staff:
-#             return render(request, "kiosk/login.html",{"message": "Please Confirm  your email to login."})
-#         elif user_obj.is_staff:
-#             login(request,user_obj)
-#             return redirect("/welcome/")
-#         elif user_obj.is_staff==False :
-#             return HttpResponse("Sorry you can't participate in this contest.")
-#         else:
-#             return HttpResponse("Sorry you can't participate in this contest.")
-#     return  render(request,"login/login.html")
-
-
-
-# def logoutuser(request):
-#     logout(request)
-#     return redirect("/home/")
-
-
-
-
 def login(request):
     print(request.POST)
     if request.method == 'POST':
